@@ -14,9 +14,9 @@ const getUserById = async (id) => {
     SELECT id, nickname, created_at FROM users WHERE id = ?`,
       [id]
     );
-    if (userID.lenght === 0) {
+    if (userID.length === 0) {
       throw generateError('El usuario no existe (no existe la id)', 404);
-    } //porque no funciona esto? si pido un id de usuario inexistente, sencillamente me da "ok" y ya. HALP
+    }
     return userID[0];
   } finally {
     if (connection) connection.release();
