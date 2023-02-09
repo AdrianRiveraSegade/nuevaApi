@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nickname\": \"adrian2\",\n    \"email\": \"adrian2@gmail.com\",\n    \"password\": \"1234\"\n    \n\n}",
+							"raw": "{\n    \"nickname\": \"adrian\",\n    \"email\": \"adrian@gmail.com\",\n    \"password\": \"1234\"\n    \n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,7 +90,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"adrian2@gmail.com\",\n    \"password\":\"1234\"\n}",
+							"raw": "{\n    \"email\":\"adrian@gmail.com\",\n    \"password\":\"1234\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -123,7 +123,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNjc1OTU2MTU5LCJleHAiOjE2NzY1NjA5NTl9.PGZrVV3YX-o2mPr8uUu4edW4SsJmFbljlNIEyL-VkwM",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc1OTYxNTUyLCJleHAiOjE2NzY1NjYzNTJ9.aOhYyjNBeWvbM-LdRjoqWmjGWSq-1FgddTa0d4tpMrw",
 								"type": "default"
 							}
 						],
@@ -132,13 +132,14 @@
 							"formdata": [
 								{
 									"key": "text",
-									"value": "nota con imagen :D6",
+									"value": "me cago en dios",
 									"type": "default"
 								},
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/hack/Pictures/Screenshots/a.png"
+									"src": "/home/hack/Pictures/Screenshots/a.png",
+									"disabled": true
 								}
 							],
 							"options": {
@@ -148,12 +149,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000",
+							"raw": "http://localhost:3000/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3000"
+							"port": "3000",
+							"path": [
+								""
+							]
 						}
 					},
 					"response": []
@@ -202,19 +206,20 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNjc1OTU2MTU5LCJleHAiOjE2NzY1NjA5NTl9.PGZrVV3YX-o2mPr8uUu4edW4SsJmFbljlNIEyL-VkwM",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc1OTYxNTUyLCJleHAiOjE2NzY1NjYzNTJ9.aOhYyjNBeWvbM-LdRjoqWmjGWSq-1FgddTa0d4tpMrw",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/6",
+							"raw": "http://localhost:3000/note/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"6"
+								"note",
+								"1"
 							]
 						}
 					},
@@ -223,23 +228,24 @@
 				{
 					"name": "deleteNote",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNjc1OTU2MTU5LCJleHAiOjE2NzY1NjA5NTl9.PGZrVV3YX-o2mPr8uUu4edW4SsJmFbljlNIEyL-VkwM",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc1OTYxNTUyLCJleHAiOjE2NzY1NjYzNTJ9.aOhYyjNBeWvbM-LdRjoqWmjGWSq-1FgddTa0d4tpMrw",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/6",
+							"raw": "http://localhost:3000/note/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"6"
+								"note",
+								"5"
 							]
 						}
 					},
