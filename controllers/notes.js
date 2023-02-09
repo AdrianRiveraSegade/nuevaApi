@@ -1,4 +1,9 @@
-const { createNote, getAllNotes, getNoteById } = require('../db/notas');
+const {
+  createNote,
+  getAllNotes,
+  getNoteById,
+  deleteNoteById,
+} = require('../db/notas');
 const { generateError, createPathIfNotExists } = require('../helpers');
 const path = require('path');
 const sharp = require('sharp');
@@ -65,9 +70,23 @@ const getSingleNoteEndpoint = async (req, res, next) => {
 };
 const deleteNoteEndpoint = async (req, res, next) => {
   try {
+    const { id } = req.params;
+
+    //sacamos la informacion de la nota a borrar
+
+    const note = await getNoteById(id);
+
+    //comprobamos que el usuario que quiere borrar, es el creador de la nota
+
+    if (req.userId !== note.user_id) {
+      throw generateError('Esta nota no es tuya, no puedes borrarlo', 401);
+    }
+
+    //borramos la nota
+    await deleteNoteById(id);
     res.send({
-      status: 'error',
-      message: 'Not implemented',
+      status: 'ok',
+      message: `La nota con la id: ${id} se borro correctamente`,
     });
   } catch (error) {
     next(error);

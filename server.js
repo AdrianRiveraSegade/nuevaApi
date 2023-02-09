@@ -36,11 +36,11 @@ app.post('/login', loginEndpoint);
 app.get('/', getNotesEndpoint);
 app.post('/', authUser, newNoteEndpoint);
 app.get('/note/:id', getSingleNoteEndpoint);
-app.delete('/note/:id', deleteNoteEndpoint);
+app.delete('/note/:id', authUser, deleteNoteEndpoint);
 
 //Middeware 404
 app.use((req, res) => {
-  res.statusCode(404).send({
+  res.status(404).send({
     status: 'error',
     message: 'Not found',
   });

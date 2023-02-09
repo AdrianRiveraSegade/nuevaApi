@@ -1,7 +1,25 @@
 const { generateError } = require('../helpers');
 const { getConnection } = require('./db');
 
-const getNoteById = async () => {
+const deleteNoteById = async (id) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    await connection.query(
+      `
+   DELETE FROM notes WHERE id = ?`,
+      [id]
+    );
+
+    return;
+  } finally {
+    if (connection) connection.release();
+  }
+};
+
+const getNoteById = async (id) => {
   let connection;
 
   try {
@@ -63,4 +81,5 @@ module.exports = {
   createNote,
   getAllNotes,
   getNoteById,
+  deleteNoteById,
 };
