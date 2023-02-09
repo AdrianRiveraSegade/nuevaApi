@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
 
 const {
   newUserEndpoint,
@@ -16,8 +17,11 @@ const {
   deleteNoteEndpoint,
 } = require('./controllers/notes');
 
+const { authUser } = require('./middlewares/auth');
+
 const app = express();
 
+app.use(fileUpload);
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -29,7 +33,7 @@ app.post('/login', loginEndpoint);
 
 //notas
 app.get('/', getNotesEndpoint);
-app.post('/', newNoteEndpoint);
+app.post('/', authUser, newNoteEndpoint);
 app.get('/note/:id', getSingleNoteEndpoint);
 app.delete('/note/:id', deleteNoteEndpoint);
 

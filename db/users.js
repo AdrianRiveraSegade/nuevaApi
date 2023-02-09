@@ -22,6 +22,30 @@ const getUserById = async (id) => {
     if (connection) connection.release();
   }
 };
+
+const getUserByEmail = async (email) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [result] = await connection.query(
+      `
+    SELECT * FROM users WHERE email = ?
+    `,
+      [email]
+    );
+
+    if (result.length === 0) {
+      throw generateError('No existe ningún usuario con este email', 404);
+    }
+
+    return result[0];
+  } finally {
+    if (connection) connection.release();
+  }
+};
+
 //Metemos un usuario en la base de datos y obtenemos la id
 
 const createUser = async (nickname, email, password) => {
@@ -73,4 +97,5 @@ const createUser = async (nickname, email, password) => {
 module.exports = {
   createUser,
   getUserById,
+  getUserByEmail,
 };

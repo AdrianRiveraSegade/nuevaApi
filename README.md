@@ -20,7 +20,8 @@ POST/user : registro de usuario nuevo
 GET/user/:id : devolver la informacion de un usuario
 POST/login : el login de un usuario que ademas devuelve el token
 GET/ Una lista de todas las notas
-POST/ Para creaun una nueva nota que necesitara cabecera con token
 GET/note/:id Devuelve la informacion de una nota
+POST/ Para creaun una nueva nota que necesitara cabecera con token
 DELETE/note/:id Borra una nota solo si eres quien lo creo
+
 # nuevaApi

@@ -1,3 +1,6 @@
+const { createNote } = require('../db/notas');
+const { generateError } = require('../helpers');
+
 const getNotesEndpoint = async (req, res, next) => {
   try {
     res.send({
@@ -10,9 +13,17 @@ const getNotesEndpoint = async (req, res, next) => {
 };
 const newNoteEndpoint = async (req, res, next) => {
   try {
+    console.log(req.body);
+    const { text } = req.body;
+
+    if (!text) {
+      throw generateError('Debe haber texto en la nota creada', 400);
+    }
+
+    const id = await createNote(req.userId, text);
     res.send({
-      status: 'error',
-      message: 'Not implemented',
+      status: 'ok',
+      message: `Nota con id: ${id} creada`,
     });
   } catch (error) {
     next(error);
