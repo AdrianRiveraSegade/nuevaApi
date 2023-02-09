@@ -21,9 +21,10 @@ const { authUser } = require('./middlewares/auth');
 
 const app = express();
 
-app.use(fileUpload);
+app.use(fileUpload());
 app.use(express.json());
 app.use(morgan('dev'));
+app.use('/uploads', express.static('./uploads'));
 
 //Endpoints
 //usuarios
