@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 
 const {
   newUserEndpoint,
@@ -21,6 +22,7 @@ const { authUser } = require('./middlewares/auth');
 
 const app = express();
 
+app.use(cors());
 app.use(fileUpload());
 app.use(express.json());
 app.use(morgan('dev'));
@@ -56,6 +58,6 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log('Servidor funcionando!');
 });
