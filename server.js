@@ -36,7 +36,8 @@ app.post('/login', loginEndpoint);
 
 //notas
 app.get('/', getNotesEndpoint);
-app.post('/', authUser, newNoteEndpoint);
+app.post('/', authUser);
+app.post('/note', newNoteEndpoint);
 app.get('/note/:id', getSingleNoteEndpoint);
 app.delete('/note/:id', authUser, deleteNoteEndpoint);
 

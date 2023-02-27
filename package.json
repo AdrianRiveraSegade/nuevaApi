@@ -4,6 +4,7 @@
   "description": "RE-DO de API",
   "main": "index.js",
   "scripts": {
+    "initDB": "node db/initDB.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js"
   },
