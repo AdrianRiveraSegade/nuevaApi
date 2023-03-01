@@ -26,18 +26,17 @@ app.use(cors());
 app.use(fileUpload());
 app.use(express.json());
 app.use(morgan('dev'));
-app.use('/uploads', express.static('./uploads'));
+app.use(express.static('./uploads'));
 
 //Endpoints
 //usuarios
 app.post('/user', newUserEndpoint);
-app.get('/user/:id', getUserEndpoint);
+app.get('/user', authUser, getUserEndpoint);
 app.post('/login', loginEndpoint);
 
 //notas
 app.get('/', getNotesEndpoint);
-app.post('/', authUser);
-app.post('/note', newNoteEndpoint);
+app.post('/note', authUser, newNoteEndpoint);
 app.get('/note/:id', getSingleNoteEndpoint);
 app.delete('/note/:id', authUser, deleteNoteEndpoint);
 

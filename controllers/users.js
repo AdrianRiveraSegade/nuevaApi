@@ -34,8 +34,8 @@ const newUserEndpoint = async (req, res, next) => {
 
 const getUserEndpoint = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const user = await getUserById(id);
+    const user = await getUserById(req.userId);
+
     res.send({
       status: 'ok',
       data: user,

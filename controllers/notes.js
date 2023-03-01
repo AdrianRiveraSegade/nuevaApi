@@ -48,6 +48,7 @@ const newNoteEndpoint = async (req, res, next) => {
     }
 
     const id = await createNote(req.userId, text, nombreImagen);
+
     res.send({
       status: 'ok',
       message: `Nota con id: ${id} creada`,
