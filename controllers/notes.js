@@ -22,10 +22,13 @@ const getNotesEndpoint = async (req, res, next) => {
 };
 const newNoteEndpoint = async (req, res, next) => {
   try {
-    const { text } = req.body;
+    const { text, title } = req.body;
 
-    if (!text) {
-      throw generateError('Debe haber texto en la nota creada', 400);
+    if (!text || !title) {
+      throw generateError(
+        'Debe haber texto en la nota creada y el titulo no puede estar vacio',
+        400
+      );
     }
 
     let nombreImagen;
@@ -47,7 +50,7 @@ const newNoteEndpoint = async (req, res, next) => {
       await image.toFile(path.join(uploadsDir, nombreImagen));
     }
 
-    const id = await createNote(req.userId, text, nombreImagen);
+    const id = await createNote(req.userId, text, nombreImagen, title);
 
     res.send({
       status: 'ok',
