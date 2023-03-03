@@ -29,7 +29,7 @@ async function main() {
         user_id INTEGER NOT NULL,
         text TEXT NOT NULL,
         image VARCHAR(100),
-        title VARCHAR(20) NOT NULL,
+        title VARCHAR(20),
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id)
     );

@@ -57,7 +57,7 @@ const getAllNotes = async () => {
   }
 };
 
-const createNote = async (userId, text, image = '') => {
+const createNote = async (userId, text, image, title = '') => {
   let connection;
 
   try {
@@ -65,10 +65,10 @@ const createNote = async (userId, text, image = '') => {
 
     const [result] = await connection.query(
       `
-    INSERT INTO notes (user_id, text, image)
-    VALUES(?, ?, ?)
+    INSERT INTO notes (user_id, text, image, title)
+    VALUES(?, ?, ?, ?)
     `,
-      [userId, text, image]
+      [userId, text, image, title]
     );
 
     return result.insertId;
