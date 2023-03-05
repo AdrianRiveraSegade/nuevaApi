@@ -75,6 +75,6 @@ Intentamos poner la opcion de editar las notas, pero nos hemos visto incapaces, 
 
 Sientete libre de explorar el codigo de la API como gustes, ademas, si quieres hacer cualquier cambio para usarlo tu mismo, adelante.
 
-ESTE ES UN PROYECTO PARA EL BOOTCAMP DE "https://www.hacaboss.com"
+ESTE ES UN PROYECTO PARA EL BOOTCAMP DE "https://www.hackaboss.com"
 
 lo de borrar y editar notas es un poco equis de asi que quizas para mas tarde mi gente.
