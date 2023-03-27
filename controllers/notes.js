@@ -11,7 +11,8 @@ const { v4: uuid } = require('uuid');
 
 const getNotesEndpoint = async (req, res, next) => {
   try {
-    const notes = await getAllNotes();
+    const { search } = req.query;
+    const notes = await getAllNotes(req.userId, search);
     res.send({
       status: 'ok',
       data: notes,

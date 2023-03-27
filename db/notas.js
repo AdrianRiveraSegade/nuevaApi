@@ -41,15 +41,34 @@ const getNoteById = async (id) => {
   }
 };
 
-const getAllNotes = async () => {
+const getAllNotes = async (id_user, search) => {
   let connection;
+
+  let result;
 
   try {
     connection = await getConnection();
-
-    const [result] = await connection.query(`
-    SELECT * FROM notes ORDER BY created_at DESC
-    `);
+    if (search) {
+      [result] = await connection.query(
+        `
+        SELECT *
+        FROM notes
+        WHERE user_id = ? AND (text LIKE ? OR title LIKE ?)
+        ORDER BY created_at DESC
+        `,
+        [id_user, `${search}`, `${search}`]
+      );
+    } else {
+      [result] = await connection.query(
+        `
+        SELECT *
+        FROM notes
+        WHERE user_id = ?
+        ORDER BY created_at DESC
+        `,
+        [id_user]
+      );
+    }
 
     return result;
   } finally {
